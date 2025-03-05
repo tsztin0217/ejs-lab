@@ -66,12 +66,12 @@ app.get('/menu', (req, res) => {
 
 
 app.get('/menu/:category', (req, res) => {
-    const category = req.params.category;
-    const filteredItems = RESTAURANT.menu.filter(item=> item.category === category)
+    const category = req.params.category; // capture the input
+    const menuItems = RESTAURANT.menu.filter(item=> item.category === category);
+    // info that we're sending over to display:
     res.render('category.ejs', {
-        category: category,
-        menuItems: filteredItems
-        
+        category: category.charAt(0).toUpperCase() + category.slice(1),
+        menuItems
     })
 });
 
