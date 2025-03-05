@@ -10,15 +10,41 @@
 <body>
     <%- include('./partials/nav') %>
         <h1>Full Menu</h1>
-        <p>
-            <% RESTAURANT.menu.forEach(item=> { %>
-            Name: <%= item.name %><br>
-            Price: <%= item.price %><br>
-            Rating: <%= item.rating %><br>
-            Details: <%= item.details %>
-        </p>
-        <% }) %>
-            </ul>
+        <h2>Mains</h2>
+        <% RESTAURANT.menu.forEach(item => { %>
+            <% if (item.category === 'mains') { %>
+                <p>
+                    Name: <%= item.name %><br>
+                    Price: $<%= item.price%><br>
+                    Rating: <%= item.rating %><br>
+                    Details: <%= item.details %>
+                </p>
+            <% } %>
+        <% }); %>
+
+        <h2>Desserts</h2>
+        <% RESTAURANT.menu.forEach(item => { %>
+            <% if (item.category === 'desserts') { %>
+                <p>
+                    Name: <%= item.name %><br>
+                    Price:$<%= item.price %><br>
+                    Rating: <%= item.rating %><br>
+                    Details: <%= item.details %>
+                </p>
+            <% } %>
+        <% }); %>
+
+        <h2>Sides</h2>
+        <% RESTAURANT.menu.forEach(item => { %>
+            <% if (item.category === 'sides') { %>
+                <p>
+                    Name: <%= item.name %><br>
+                    Price: $<%= item.price %><br>
+                    Rating: <%= item.rating %><br>
+                    Details: <%= item.details %>
+                </p>
+            <% } %>
+        <% }); %>
 </body>
 
 </html>
