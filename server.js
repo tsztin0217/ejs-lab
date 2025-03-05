@@ -53,7 +53,7 @@ const RESTAURANT = {
 
 app.get('/', (req, res) => {
     res.render('home.ejs', {
-        RESTAURANT: RESTAURANT
+        RESTAURANT
     });
 });
 
@@ -63,5 +63,16 @@ app.get('/menu', (req, res) => {
     }
 );
 })
+
+
+app.get('/menu/:category', (req, res) => {
+    const category = req.params.category;
+    const filteredItems = RESTAURANT.menu.filter(item=> item.category === category)
+    res.render('category.ejs', {
+        category: category,
+        menuItems: filteredItems
+        
+    })
+});
 
 app.listen(3000);
